@@ -92,7 +92,8 @@ function generateRandomEmployees(count) {
     const names = employee.gender === 'male' ? maleNames : femaleNames;
     const surnames = employee.gender === 'male' ? maleSurnames : femaleSurnames;
 
-    employee.birthdate = getRandomAge(dtoIn.age);
+    let ageRange = dtoIn.age
+    employee.birthdate = getRandomAge(ageRange);
     employee.name = getRandomFromList(names);
     employee.surname = getRandomFromList(surnames);
     employee.workload = getRandomFromList(workLoad);
