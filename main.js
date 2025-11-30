@@ -1,5 +1,3 @@
-//TODO add imports if needed
-//TODO doc
 /**
  * The main function which calls the application.
  * Please, add specific description here for the application purpose.
@@ -62,23 +60,39 @@ const femaleSurnames = [
 const workLoad = [10, 20, 30, 40];
 const listOfGenders = ['male', 'female'];
 
+/**
+ * Randomly selects an item from a list.
+ * @param {Array} list  - list of items to select from.
+ */
+
 function getRandomFromList(list) {
   let randomSelection = Math.floor(Math.random() * list.length);
   let randomResult = list[randomSelection];
   return randomResult;
 }
 
+/**
+ * Randomly generates a birthdate based on age range.
+ * @param {object} ageRange  - age range object with min and max properties. 
+ */
+
 function getRandomAge(ageRange) {
   const msInYear = 365.25 * 24 * 60 * 60 * 1000;
 
-  const age = ageRange.min + Math.random() * (ageRange.max - ageRange.min);
+  let age = ageRange.min + Math.random() * (ageRange.max - ageRange.min);
 
-  const ageMs = age * msInYear;
+  let ageMs = age * msInYear;
 
-  const birthdate = new Date(Date.now() - ageMs);
+  let birthdate = new Date(Date.now() - ageMs);
 
   return birthdate.toISOString();
 }
+
+/**
+ * Randomly generates a list of employees.
+ * @param {number} count  - number of employees to generate.
+ * @param {object} ageRange  - age range object with min and max properties.
+ */
 
 function generateRandomEmployees(count, ageRange) {
   let listOfEmployees = [];
@@ -99,8 +113,14 @@ function generateRandomEmployees(count, ageRange) {
   }
   return listOfEmployees;
 }
+
+/**
+ * Main function which calls the application.
+ * @param {object} dtoIn  - input data object with count and age properties.
+ * @returns {Array}  - list of generated employees.
+ */
+
 export function main(dtoIn) {
-  //TODO code
   let dtoOut = generateRandomEmployees(dtoIn.count, dtoIn.age);
   return dtoOut;
 }
