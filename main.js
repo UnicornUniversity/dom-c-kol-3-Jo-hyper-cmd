@@ -6,7 +6,6 @@
  * @param {object} dtoIn contains count of employees, age limit of employees {min, max}
  * @returns {Array} of employees
  */
-
 //lists of male names & surnames
 const maleNames = [
   'Ján',
@@ -81,7 +80,7 @@ function getRandomAge(ageRange) {
   return birthdate.toISOString();
 }
 
-function generateRandomEmployees(count) {
+function generateRandomEmployees(count, ageRange) {
   let listOfEmployees = [];
 
   for (let i = 0; i < count; i++) {
@@ -92,19 +91,16 @@ function generateRandomEmployees(count) {
     const names = employee.gender === 'male' ? maleNames : femaleNames;
     const surnames = employee.gender === 'male' ? maleSurnames : femaleSurnames;
 
-    let ageRange = dtoIn.age
     employee.birthdate = getRandomAge(ageRange);
     employee.name = getRandomFromList(names);
     employee.surname = getRandomFromList(surnames);
-    employee.workload = getRandomFromList(workLoad);
     employee.workload = getRandomFromList(workLoad);
     listOfEmployees.push(employee);
   }
   return listOfEmployees;
 }
-
 export function main(dtoIn) {
   //TODO code
-  let dtoOut = generateRandomEmployees(dtoIn.count);
+  let dtoOut = generateRandomEmployees(dtoIn.count, dtoIn.age);
   return dtoOut;
 }
